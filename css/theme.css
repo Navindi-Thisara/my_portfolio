@@ -1,0 +1,213 @@
+/* =====================================
+   BLUE CYBER TECH THEME
+   Dark & Light Mode
+   Gradient Accents + Animated Buttons & Logo
+   Optimized for WebKit & Firefox
+   ===================================== */
+
+/* ---------- DEFAULT DARK MODE ---------- */
+:root {
+  --bg: #0d0d0d;
+  --card-bg: #1a1a1a;
+  --accent: linear-gradient(135deg, #00c6ff, #0072ff);
+  --accent-solid: #00c6ff;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border: #333333;
+  --shadow: rgba(0, 198, 255, 0.1);
+}
+
+/* ---------- LIGHT MODE ---------- */
+body.light-mode {
+  --bg: #f7f7f7;
+  --card-bg: #ffffff;
+  --accent: linear-gradient(135deg, #00c6ff, #0072ff);
+  --accent-solid: #00c6ff;
+  --text-primary: #0d0d0d;
+  --text-secondary: #555555;
+  --border: #000000;
+  --shadow: rgba(0, 198, 255, 0.1);
+}
+
+/* ---------- GLOBAL ---------- */
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ---------- CARDS & SECTIONS ---------- */
+.edu-card,
+.skill-card,
+.project-card,
+.contact-form input,
+.contact-form textarea {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border);
+  box-shadow: 0 6px 12px var(--shadow);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.edu-card:hover,
+.skill-card:hover,
+.project-card:hover,
+.contact-form input:focus,
+.contact-form textarea:focus {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 25px var(--shadow);
+  border-color: var(--accent-solid);
+}
+
+/* ---------- GRADIENT ANIMATION ---------- */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- ACCENT BUTTONS ---------- */
+.accent-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 22px;
+  font-weight: 600;
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.accent-btn:hover {
+  transform: scale(1.07);
+  opacity: 0.95;
+}
+
+.outline-btn {
+  border: 2px solid var(--accent-solid);
+  color: var(--accent-solid);
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.outline-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.05);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* ---------- LOGO GRADIENT ---------- */
+.logo .accent {
+  color: var(--accent-solid);  /* fallback solid */
+  background: var(--accent);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+  display: inline-block;
+}
+
+/* ---------- SOCIAL ICONS ---------- */
+
+/* Base icon styles */
+.social-links img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Dark mode → white icons */
+body:not(.light-mode) .social-links img {
+  --icon-filter: invert(1) brightness(1.2);
+  filter: var(--icon-filter);
+}
+
+/* Light mode → black icons */
+body.light-mode .social-links img {
+  --icon-filter: invert(0) brightness(1);
+  filter: var(--icon-filter);
+}
+
+/* Hover (both modes) */
+.social-links a:hover img {
+  transform: scale(1.25);
+  filter: brightness(1.4) var(--icon-filter);
+}
+
+/* Active / Click (both modes) */
+.social-links a:active img {
+  transform: scale(0.9);
+  /* Apply blue accent effect on top of base filter */
+  filter: var(--icon-filter) sepia(100%) saturate(2000%) hue-rotate(185deg) brightness(1.2);
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  background-color: var(--bg);
+  border-bottom: 2px solid var(--border);
+  box-shadow: 0 2px 0 var(--shadow);
+  transition: background-color 0.4s, border-color 0.4s;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  background-color: var(--bg);
+}
+
+.hero .profile-pic {
+  border: 3px solid var(--accent-solid);
+  transition: border-color 0.3s;
+}
+
+/* ---------- SECTION TITLES ---------- */
+section h2 {
+  color: var(--text-primary);
+  border-bottom: 4px solid var(--accent-solid);
+  padding-bottom: 6px;
+  display: inline-block;
+  position: relative;
+}
+
+/* ---------- CONTACT FORM ---------- */
+.contact-form button {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.contact-form button:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+/* ---------- THEME TOGGLE BUTTON ---------- */
+#theme-toggle {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background: var(--accent);
+}
+
+/* ---------- GLOBAL ELEMENT TRANSITIONS ---------- */
+* {
+  transition: background-color 0.4s, color 0.4s, border-color 0.4s, box-shadow 0.4s, transform 0.3s;
+}
+
+/* ---------- SHADOWS & HIGHLIGHTS ---------- */
+button, .btn, .menu-toggle {
+  box-shadow: 0 2px 6px var(--shadow);
+}
