@@ -104,7 +104,7 @@ body {
 
 /* ---------- LOGO GRADIENT ---------- */
 .logo .accent {
-  color: var(--accent-solid);  /* fallback solid */
+  color: var(--accent-solid);
   background: var(--accent);
   background-clip: text;
   -webkit-background-clip: text;
@@ -115,36 +115,29 @@ body {
 }
 
 /* ---------- SOCIAL ICONS ---------- */
-
-/* Base icon styles */
 .social-links img {
   width: 28px;
   height: 28px;
   transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-/* Dark mode → white icons */
 body:not(.light-mode) .social-links img {
   --icon-filter: invert(1) brightness(1.2);
   filter: var(--icon-filter);
 }
 
-/* Light mode → black icons */
 body.light-mode .social-links img {
   --icon-filter: invert(0) brightness(1);
   filter: var(--icon-filter);
 }
 
-/* Hover (both modes) */
 .social-links a:hover img {
   transform: scale(1.25);
   filter: brightness(1.4) var(--icon-filter);
 }
 
-/* Active / Click (both modes) */
 .social-links a:active img {
   transform: scale(0.9);
-  /* Apply blue accent effect on top of base filter */
   filter: var(--icon-filter) sepia(100%) saturate(2000%) hue-rotate(185deg) brightness(1.2);
 }
 
@@ -190,11 +183,16 @@ section h2 {
   opacity: 0.95;
 }
 
-/* ---------- THEME TOGGLE BUTTON ---------- */
+/* ---------- THEME TOGGLE: FIXED POSITION ---------- */
 #theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;  /* FIX: moved left */
+  z-index: 1002;
   background-color: var(--card-bg);
   border: 2px solid var(--border);
   border-radius: 50%;
+  padding: 8px;
   transition: all 0.3s ease;
 }
 
@@ -202,12 +200,49 @@ section h2 {
   background: var(--accent);
 }
 
+/* ---------- MENU TOGGLE (HAMBURGER) ---------- */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 70px; /* stays on the left of theme toggle */
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 1003;
+  color: var(--text-primary);
+}
+
+/* ---------- MOBILE MENU ---------- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--card-bg);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    box-shadow: 0 6px 12px var(--shadow);
+  }
+
+  .nav ul.show {
+    display: flex;
+  }
+}
+
 /* ---------- GLOBAL ELEMENT TRANSITIONS ---------- */
 * {
   transition: background-color 0.4s, color 0.4s, border-color 0.4s, box-shadow 0.4s, transform 0.3s;
 }
 
-/* ---------- SHADOWS & HIGHLIGHTS ---------- */
+/* ---------- SHADOWS ---------- */
 button, .btn, .menu-toggle {
   box-shadow: 0 2px 6px var(--shadow);
 }
