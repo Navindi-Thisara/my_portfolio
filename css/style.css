@@ -527,23 +527,23 @@ section {
   position: absolute;
   top: 50%;
   font-size: 32px;
-  transform: translate(-50%, -50%);
   z-index: 4;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 70px;
+  height: 70px;
+  transform: translateY(-50%);
 }
 
 .edu-card:nth-child(odd)::after { 
   right: -115px;
   left: auto;
-  transform: translate(0, -50%);
 }
 .edu-card:nth-child(even)::after { 
   left: -115px;
   right: auto;
-  transform: translate(0, -50%);
 }
 
 /* ---------- FIXED DATE LABEL ---------- */
@@ -628,7 +628,6 @@ section {
   .edu-card::after { 
     left: -78px !important;
     right: auto !important;
-    transform: translate(0, -50%) !important;
   }
   .edu-date {
     top: -35px !important;
@@ -667,7 +666,8 @@ section {
     font-size: 20px;
     left: -50px !important;
     right: auto !important;
-    transform: translate(0, -50%) !important;
+    width: 45px;
+    height: 45px;
   }
   .edu-card h3 { 
     font-size: 1rem;
